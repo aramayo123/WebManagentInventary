@@ -13,6 +13,7 @@ class Client extends Model
         'password',
         'licencia_expires_at',
         'secret_hash',
+        'ip_sesion',
         'firma',
     ];
 }

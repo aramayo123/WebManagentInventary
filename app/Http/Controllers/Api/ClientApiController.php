@@ -36,6 +36,7 @@ class ClientApiController extends Controller
             'licencia_expires_at' => $client->licencia_expires_at,
             'secret_hash' => $client->secret_hash,
             'last_used_at' => $client->last_used_at,
+            'ip_sesion' => $client->ip_sesion,
             'firma' => $client->firma,
         ], 200);
     }
