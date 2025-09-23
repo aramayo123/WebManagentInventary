@@ -60,4 +60,18 @@ class ClientApiController extends Controller
         $client->update();
         return response()->json(['success' => true], 200);
     }
+    public function updateLogout(Request $request)
+    {
+        $email = strtolower($request->input('email'));
+        if (! $email) {
+            return response()->json(['error' => 'Email requerido'], 400);
+        }
+        $client = Client::where('email', $email)->first();
+        if(!$client)
+            return response()->json(['error' => 'Cliente no encontrado'], 404);
+    
+        $client->ip_sesion = "";
+        $client->update();
+        return response()->json(['success' => true], 200);
+    }
 }
