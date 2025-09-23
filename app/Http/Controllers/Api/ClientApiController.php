@@ -44,15 +44,19 @@ class ClientApiController extends Controller
     public function updateLastUsed(Request $request)
     {
         $email = strtolower($request->input('email'));
-
+        $newip = $request->input('ip_sesion');
         if (! $email) {
             return response()->json(['error' => 'Email requerido'], 400);
+        }
+        if (! $newip) {
+            return response()->json(['error' => 'Nueva ip requerida'], 400);
         }
         $client = Client::where('email', $email)->first();
         if(!$client)
             return response()->json(['error' => 'Cliente no encontrado'], 404);
     
         $client->last_used_at = now();
+        $client->ip_sesion = $newip;
         $client->update();
         return response()->json(['success' => true], 200);
     }

@@ -16,6 +16,7 @@
           <th>Email</th>
           <th>Licencia expira</th>
           <th>Ultima sesion</th>
+          <th>Ip de sesion</th>
           <th>Acciones</th>
         </tr>
       </thead>
@@ -26,6 +27,7 @@
             <td>{{ $cliente->email }}</td>
             <td>{{ $cliente->licencia_expires_at ? $cliente->licencia_expires_at : 'Sin fecha' }}</td>
             <td>{{ $cliente->last_used_at ? $cliente->last_used_at : 'Sin fecha' }}</td>
+            <td>{{ $cliente->ip_sesion ? $cliente->ip_sesion : 'Sin sesion activa' }}</td>
             <td>
               <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-sm btn-warning">Editar</a>
               <form action="{{ route('clientes.destroy', $cliente->id) }}" method="POST" class="d-inline">
